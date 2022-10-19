@@ -1,11 +1,5 @@
-# alex-laycalvert
-# https://github.com/alex-laycalvert/slacker
+CFLAGS=-lncurses
 
-CFLAGS=-std=c++20 -lncurses
-
-game-of-life:
+gol:
 	mkdir -p ./build
-	$(CXX) $(CFLAGS) src/*.cpp -o ./build/gol
-dev:
-	mkdir -p ./build
-	$(CXX) $(CFLAGS) -Wall -Wextra src/*.cpp -o ./build/gol.dev
+	$(CXX) $(CFLAGS) ./src/*.cpp -o ./build/gol

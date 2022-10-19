@@ -59,7 +59,7 @@ void GOL::loadFile(const string filename) {
 }
 
 void GOL::evolve() {
-    vector<vector<int>> newBoard(board);
+    vector<vector<int> > newBoard(board);
     for (int i = 0; i < boardRows; i++) {
         for (int j = 0; j < boardCols; j++) {
             int neighbors = getNeighbors(i, j);

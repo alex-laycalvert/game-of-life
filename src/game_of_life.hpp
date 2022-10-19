@@ -39,7 +39,7 @@ class GOL {
     static GOL *instance;
     int evolution;
     string file;
-    vector<vector<int>> board;
+    vector<vector<int> > board;
     int boardRows;
     int boardCols;
     void evolve();
