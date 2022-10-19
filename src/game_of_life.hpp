@@ -4,15 +4,20 @@
 #ifndef GAME_OF_LIFE_HPP_
 #define GAME_OF_LIFE_HPP_
 
-#define EMPTY ' '
-#define OCCUPIED 'o'
+#define EMPTY 0
+#define OCCUPIED 1
 #define DEFAULT_MAX_EVOLUTIONS 5000
+#define DEFAULT_EVOLUTION_SPEED 250
+#define DEFAULT_CELL_CHARACTER "o"
 
+#include <getopt.h>
 #include <ncurses.h>
+#include <signal.h>
 
 #include <chrono>
 #include <fstream>
 #include <iostream>
+#include <locale>
 #include <string>
 #include <thread>
 #include <vector>
@@ -24,8 +29,8 @@ using std::vector;
 class GOL {
    public:
     static GOL *getGOL();
-    void run();
-    void run(const int maxEvolutions);
+    void run(const int maxEvolutions, const int evolutionSpeed,
+             const string cellCharacter);
     void loadFile(const string filename);
 
    private:
@@ -34,12 +39,13 @@ class GOL {
     static GOL *instance;
     int evolution;
     string file;
-    vector<vector<char>> board;
+    vector<vector<int>> board;
     int boardRows;
     int boardCols;
     void evolve();
-    void printBoard();
+    void printBoard(const string cellCharacter);
     int getNeighbors(const int row, const int col);
+    void sleep(const int milliseconds);
 };
 
 #endif // GAME_OF_LIFE_HPP_

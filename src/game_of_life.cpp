@@ -14,12 +14,11 @@ GOL *GOL::getGOL() {
     return GOL::instance;
 }
 
-void GOL::run() { run(DEFAULT_MAX_EVOLUTIONS); }
-
-void GOL::run(const int maxEvolutions) {
+void GOL::run(const int maxEvolutions, const int evolutionSpeed,
+              const string cellCharacter) {
     for (int i = 0; i < maxEvolutions; i++) {
-        printBoard();
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        printBoard(cellCharacter);
+        sleep(evolutionSpeed);
         evolve();
     }
 }
@@ -35,9 +34,9 @@ void GOL::loadFile(const string filename) {
     string line;
     while (getline(file, line)) {
         std::cout << "LINE: " << line << "\n";
-        vector<char> boardRow;
-        for (int i = 0; i < line.size(); i++) {
-            if (line.at(i) == EMPTY) {
+        vector<int> boardRow;
+        for (int i = 0; i < (int)line.size(); i++) {
+            if (line.at(i) == ' ') {
                 boardRow.push_back(EMPTY);
             } else {
                 boardRow.push_back(OCCUPIED);
@@ -49,18 +48,20 @@ void GOL::loadFile(const string filename) {
         board.push_back(boardRow);
     }
     for (int i = board.size(); i < rows; i++) {
-        vector<char> boardRow;
+        vector<int> boardRow;
         for (int i = 0; i < cols; i++) {
             boardRow.push_back(EMPTY);
         }
         board.push_back(boardRow);
     }
+    boardRows = rows;
+    boardCols = cols;
 }
 
 void GOL::evolve() {
-    vector<vector<char>> newBoard(board);
-    for (int i = 0; i < board.size(); i++) {
-        for (int j = 0; j < board.at(i).size(); j++) {
+    vector<vector<int>> newBoard(board);
+    for (int i = 0; i < boardRows; i++) {
+        for (int j = 0; j < boardCols; j++) {
             int neighbors = getNeighbors(i, j);
             if (neighbors <= 1 || neighbors >= 4) {
                 newBoard.at(i).at(j) = EMPTY;
@@ -73,11 +74,14 @@ void GOL::evolve() {
     board = newBoard;
 }
 
-void GOL::printBoard() {
-    mvprintw(1, 1, "HELLO WORLD");
-    for (int i = 0; i < board.size(); i++) {
-        for (int j = 0; j < board.at(i).size(); j++) {
-            mvprintw(i, j, "%d", board.at(i).at(j));
+void GOL::printBoard(const string cellCharacter) {
+    for (int i = 0; i < boardRows; i++) {
+        for (int j = 0; j < boardCols; j++) {
+            string display = " ";
+            if (board.at(i).at(j) == OCCUPIED) {
+                display = cellCharacter;
+            }
+            mvprintw(i, j, "%s", display.c_str());
         }
     }
     refresh();
@@ -97,4 +101,8 @@ int GOL::getNeighbors(const int row, const int col) {
         }
     }
     return neighbors;
+}
+
+void GOL::sleep(const int milliseconds) {
+    std::this_thread::sleep_for(std::chrono::milliseconds(milliseconds));
 }
