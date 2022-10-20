@@ -1,0 +1,12 @@
+pkgbase = gol
+	pkgdesc = An implementation of John Conway's Game of Life
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = github.com/alex-laycalvert/gol.git
+	arch = x86_64
+	license = MIT
+	depends = ncurses
+	source = git+https://github.com/alex-laycalvert/gol.git
+	md5sums = SKIP
+
+pkgname = gol
