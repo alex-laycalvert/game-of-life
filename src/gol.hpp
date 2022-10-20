@@ -1,8 +1,8 @@
 // alex-laycalvert
 // https://github.com/alex-laycalvert/game-of-life
 
-#ifndef GAME_OF_LIFE_HPP_
-#define GAME_OF_LIFE_HPP_
+#ifndef GOL_HPP_
+#define GOL_HPP_
 
 #define EMPTY 0
 #define OCCUPIED 1
@@ -48,4 +48,4 @@ class GOL {
     void sleep(const int milliseconds);
 };
 
-#endif // GAME_OF_LIFE_HPP_
+#endif // GOL_HPP_
