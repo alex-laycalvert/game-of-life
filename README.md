@@ -1,4 +1,4 @@
-# game-of-life
+# gol
 
 A Game of Life implementation in C++
 

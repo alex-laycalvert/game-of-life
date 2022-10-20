@@ -1,10 +1,10 @@
 # Maintainer: Alex Lay-Calvert <alex.laycalvert@gmail.com>
-pkgname=game-of-life
+pkgname=gol
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="An implementation of John Conway's Game of Life"
 arch=(x86_64)
-url="github.com/alex-laycalvert/game-of-life.git"
+url="github.com/alex-laycalvert/gol.git"
 license=('MIT')
 groups=()
 depends=('ncurses')
@@ -26,7 +26,5 @@ build() {
 }
 package() {
     cd "$pkgname"
-    ls -l
-    cat makefile
     make DESTDIR="$pkgdir/" install
 }

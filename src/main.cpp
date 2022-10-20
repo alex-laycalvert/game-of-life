@@ -1,7 +1,7 @@
 // alex-laycalvert
 // https://github.com/alex-laycalvert/game-of-life
 
-#include "game_of_life.hpp"
+#include "gol.hpp"
 
 using std::stoi;
 
