@@ -11,7 +11,7 @@ endif
 
 gol:
 	mkdir -p ./bin
-	$(CXX) $(CFLAGS) ./src/*.cpp -o ./bin/gol
+	$(CXX) ./src/*.cpp $(CFLAGS) -o ./bin/gol
 .PHONY: install
 install: gol
 	mkdir -p $(DESTDIR)$(PREFIX)/bin
