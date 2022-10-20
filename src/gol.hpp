@@ -23,6 +23,7 @@
 #include <vector>
 
 using std::ifstream;
+using std::rand;
 using std::string;
 using std::vector;
 
@@ -32,6 +33,7 @@ class GOL {
     void run(const int maxEvolutions, const int evolutionSpeed,
              const string cellCharacter);
     void loadFile(const string filename);
+    void loadRandom();
 
    private:
     GOL();

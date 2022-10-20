@@ -24,6 +24,7 @@ void usage(string name) {
                  "(default: 250)\n";
     std::cout << "\t-c <character>\tcharacter to print for occupied cells "
                  "(default: 'o')\n";
+    std::cout << "\t-r \t\tuse a random generation of cells (overrides -f)\n";
 }
 
 int main(int argc, char **argv) {
@@ -31,11 +32,12 @@ int main(int argc, char **argv) {
     int evolutionSpeed = DEFAULT_EVOLUTION_SPEED;
     string cellCharacter = DEFAULT_CELL_CHARACTER;
     string filename = "";
+    bool random = false;
 
     signal(SIGINT, signalHandler);
 
     int c;
-    while ((c = getopt(argc, argv, "hn:s:f:c:")) != -1) {
+    while ((c = getopt(argc, argv, "hrn:s:f:c:")) != -1) {
         switch (c) {
             case 'h':
                 usage(argv[0]);
@@ -53,6 +55,9 @@ int main(int argc, char **argv) {
             case 'c':
                 cellCharacter = optarg;
                 break;
+            case 'r':
+                random = true;
+                break;
             case '?':
                 usage(argv[0]);
                 exit(1);
@@ -65,8 +70,8 @@ int main(int argc, char **argv) {
         }
     }
 
-    if (filename.size() <= 0) {
-        std::cerr << "Please provide a file with -f <filename>\n";
+    if (filename.size() <= 0 && !random) {
+        std::cerr << "Please provide a file with -f <filename> or use -r\n";
         exit(1);
     }
 
@@ -79,7 +84,11 @@ int main(int argc, char **argv) {
     curs_set(0);
 
     GOL *gol = GOL::getGOL();
-    gol->loadFile(filename);
+    if (random) {
+        gol->loadRandom();
+    } else {
+        gol->loadFile(filename);
+    }
     gol->run(maxEvolutions, evolutionSpeed, cellCharacter);
 
     endwin();

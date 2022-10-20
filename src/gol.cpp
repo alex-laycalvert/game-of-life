@@ -3,6 +3,8 @@
 
 #include "gol.hpp"
 
+using std::rand;
+
 GOL *GOL::instance = 0;
 
 GOL::GOL(){};
@@ -51,6 +53,20 @@ void GOL::loadFile(const string filename) {
         vector<int> boardRow;
         for (int i = 0; i < cols; i++) {
             boardRow.push_back(EMPTY);
+        }
+        board.push_back(boardRow);
+    }
+    boardRows = rows;
+    boardCols = cols;
+}
+
+void GOL::loadRandom() {
+    int rows, cols;
+    getmaxyx(stdscr, rows, cols);
+    for (int i = 0; i < rows; i++) {
+        vector<int> boardRow;
+        for (int j = 0; j < cols; j++) {
+            boardRow.push_back(rand() % 2);
         }
         board.push_back(boardRow);
     }
