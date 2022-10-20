@@ -4,7 +4,16 @@ A Game of Life implementation in C++
 
 ## Installation
 
-Linux and macOS:
+### macOS
+
+You can install `gol` using [Homebrew](https://brew.sh/) for macOS:
+
+```bash
+brew tap alex-laycalvert/homebrew-gol
+brew install gol
+```
+
+### Linux (building from source)
 
 - Clone this repo:
 
@@ -13,14 +22,9 @@ git clone https://github.com/alex-laycalvert/gol
 cd gol
 ```
 
-- Build the project
+- Build and Install
 ```bash
-make
-```
-
-- Profit
-```bash
-./build/gol [options]
+make install
 ```
 
 ## Usage
