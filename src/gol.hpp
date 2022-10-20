@@ -23,7 +23,6 @@
 #include <vector>
 
 using std::ifstream;
-using std::rand;
 using std::string;
 using std::vector;
 
