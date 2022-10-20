@@ -40,6 +40,7 @@ make install
 - `-n <number>`: Number of evolutions to go through (default: 5000)
 - `-s <number>`: Speed of each evolution in milliseconds (default: 250)
 - `-c <character>`: Character to print for occupied cells (accepts UNICODE, default: 'o')
+- `-r`: Use a random generation of cells (overrides -f)
 
 ### GOL Files
 
