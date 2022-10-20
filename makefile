@@ -1,7 +1,14 @@
-PREFIX=/usr
+UNAME := $(shell uname)
 CFLAGS=-lncurses
 
-all:
+ifeq ($(UNAME), Darwin)
+	PREFIX=/usr/local
+endif
+
+ifeq ($(UNAME), Linux)
+	PREFIX=/usr
+endif
+
 gol:
 	mkdir -p ./bin
 	$(CXX) $(CFLAGS) ./src/*.cpp -o ./bin/gol
