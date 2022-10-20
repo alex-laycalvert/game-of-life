@@ -1,5 +1,5 @@
 // alex-laycalvert
-// https://github.com/alex-laycalvert/game-of-life
+// https://github.com/alex-laycalvert/gol
 
 #ifndef GOL_HPP_
 #define GOL_HPP_

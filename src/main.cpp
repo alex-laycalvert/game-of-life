@@ -1,5 +1,5 @@
 // alex-laycalvert
-// https://github.com/alex-laycalvert/game-of-life
+// https://github.com/alex-laycalvert/gol
 
 #include "gol.hpp"
 
@@ -15,7 +15,7 @@ void usage(string name) {
     std::cout << "usage: " << name << " [options]\n\n";
     std::cout << "author: alex-laycalvert\n\n";
     std::cout << "A C++ implementation of John Conway's Game of Life\n";
-    std::cout << "https://github.com/alex-laycalvert/game-of-life\n\n";
+    std::cout << "https://github.com/alex-laycalvert/gol\n\n";
     std::cout << "options:\n";
     std::cout << "\t-h\t\tdisplay this menu\n";
     std::cout << "\t-f <filename>\tfile to read the board state from\n";

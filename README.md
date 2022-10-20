@@ -9,8 +9,8 @@ Linux and macOS:
 - Clone this repo:
 
 ```bash
-git clone https://github.com/alex-laycalvert/game-of-life
-cd game-of-life
+git clone https://github.com/alex-laycalvert/gol
+cd gol
 ```
 
 - Build the project
