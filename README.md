@@ -33,6 +33,8 @@ make install
 ./gol [options]
 ```
 
+Use `CTRL-C` to quit the program at any time.
+
 ### Options
 
 - `-h`: Displays the help menu
